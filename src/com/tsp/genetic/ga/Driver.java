@@ -6,36 +6,20 @@ import java.util.Arrays;
 public class Driver {
 
 	public ArrayList<City> initialRoute = new ArrayList<City>(Arrays.asList(
-			new City("Wellawatte", 6.8741, 79.8505),
+			
+			
+			
+			new City("depot", 6.8741, 79.8505),
 			new City("Bataramulla", 6.8980, 79.9223),
 			new City("Rajagiriya", 6.9094, 79.8943),
 			new City("Gampaha", 7.0840, 80.0098),
 			new City("Nugegoda", 6.8649, 79.8997),
 			new City("Thalawathugoda", 6.8759, 79.9392),
-			new City("Kurunagal", 7.4818, 80.3609),
-			new City("Panadura", 6.7106, 79.9074),
-			new City("Negombo", 7.2008, 79.8737),
-			new City("Piliyandala", 6.8018, 79.9227),
-			new City("Wellawatte", 6.8741, 79.8505),
-			new City("Bataramulla", 6.8980, 79.9223),
-			new City("Rajagiriya", 6.9094, 79.8943),
-			new City("Gampaha", 7.0840, 80.0098),
-			new City("Nugegoda", 6.8649, 79.8997),
-			new City("Thalawathugoda", 6.8759, 79.9392),
-			new City("Kurunagal", 7.4818, 80.3609),
-			new City("Panadura", 6.7106, 79.9074),
-			new City("Negombo", 7.2008, 79.8737),
-			new City("Piliyandala", 6.8018, 79.9227),
-			new City("Wellawatte", 6.8741, 79.8505),
-			new City("Bataramulla", 6.8980, 79.9223),
-			new City("Rajagiriya", 6.9094, 79.8943),
-			new City("Gampaha", 7.0840, 80.0098),
-			new City("Nugegoda", 6.8649, 79.8997),
-			new City("Thalawathugoda", 6.8759, 79.9392),
-			new City("Kurunagal", 7.4818, 80.3609),
 			new City("Panadura", 6.7106, 79.9074),
 			new City("Negombo", 7.2008, 79.8737),
 			new City("Piliyandala", 6.8018, 79.9227)
+			
+		
 			
 			));
 	

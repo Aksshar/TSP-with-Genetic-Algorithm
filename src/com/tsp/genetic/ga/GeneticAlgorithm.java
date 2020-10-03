@@ -1,6 +1,7 @@
 package com.tsp.genetic.ga;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.stream.IntStream;
 
 public class GeneticAlgorithm {
@@ -9,10 +10,11 @@ public class GeneticAlgorithm {
 	public static final int TOURNAMENT_SELECTION_SIZE = 3;
 	public static final int POPULATION_SIZE = 8;
 	public static final int NUMB_OF_ELITE_ROUTES = 1;
-	public static final int NUMB_OF_GENERATIONS = 10000;
+	public static final int NUMB_OF_GENERATIONS = 100;
 	private ArrayList<City> initialRoute = null;
 	public GeneticAlgorithm(ArrayList<City> initialRoute) {this.initialRoute = initialRoute;}
 	public ArrayList<City> getInitialRoute(){return initialRoute;}
+	//
 	public Population evolve(Population population) {return mutatePopulation(crossoverPopulation(population));}
 	
 	Population crossoverPopulation(Population population) {
@@ -30,7 +32,7 @@ public class GeneticAlgorithm {
 		population.getRoutes().stream().filter(x -> population.getRoutes().indexOf(x) >= NUMB_OF_ELITE_ROUTES).forEach(x-> mutateRoute(x));
 		return population;
 	}
-	
+	//
 	Route crossoverRoute(Route route1, Route route2) {
 		Route crossoverRoute = new Route(this);
 		Route tempRoute1 = route1;
@@ -41,8 +43,10 @@ public class GeneticAlgorithm {
 		}
 		for(int x = 0; x < crossoverRoute.getCities().size()/2;x++)
 			crossoverRoute.getCities().set(x, tempRoute1.getCities().get(x));
+		
 		return fillNullsInCrossoverRoute(crossoverRoute, tempRoute2);
 	}
+	
 	
 	private Route fillNullsInCrossoverRoute(Route crossoverRoute, Route route) {
 		route.getCities().stream().filter(x -> !crossoverRoute.getCities().contains(x)).forEach(cityX -> {
@@ -53,15 +57,20 @@ public class GeneticAlgorithm {
 				}
 			}
 		});
+		
 		return crossoverRoute;
 	}
 	
 	Route mutateRoute(Route route) {
-		route.getCities().stream().filter(x -> Math.random() < MUTATION_RATE).forEach(cityX -> {
+		route.getCities().stream().filter(x -> Math.random() < MUTATION_RATE && route.getCities().indexOf(x) != 0).forEach(cityX -> {
 			int y = (int) (route.getCities().size() * Math.random());
+			//
+			//if(route.getCities().indexOf(cityX)!=0 || route.getCities().indexOf(cityX)!=route.getCities().size()-1) {
+			if(y!=0) {
 			City cityY = route.getCities().get(y);
 			route.getCities().set(route.getCities().indexOf(cityX), cityY);
 			route.getCities().set(y, cityX);
+			}
 		});
 		return route;
 	}
